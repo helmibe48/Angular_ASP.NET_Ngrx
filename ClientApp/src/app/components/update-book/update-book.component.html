@@ -1,0 +1,53 @@
+<div class="update-book">
+    <form [formGroup]="updateBookForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title" class="required">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title" placeholder="Book title">
+        </div>
+        <div class="form-group">
+            <label for="author" class="required">Author</label>
+            <input type="text" class="form-control" id="author" formControlName="author" placeholder="Book author">
+        </div>
+        <div class="form-group">
+            <label for="description" class="required">Description</label>
+            <textarea type="text" class="form-control" id="description" formControlName="description" placeholder="Book description">
+                
+            </textarea>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-4 col-xs-4 col-sm-4">
+                <div class="form-group">
+                    <label for="dateStart">Date start</label>
+                    <input type="date" 
+                    class="form-control" 
+                    id="dateStart" 
+                    formControlName="dateStart"
+                    placeholder="Date start">
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-4 col-sm-4">
+                <div class="form-group">
+                    <label for="dateRead">Date read</label>
+                        <input 
+                        type="date" 
+                        class="form-control" 
+                        id="dateRead" 
+                        formControlName="dateRead"
+                        placeholder="Date read">
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-4 col-sm-4">
+                <div class="form-group">
+                    <label for="rate">Rate</label>
+                    <input type="number" min="0" max="5" class="form-control" 
+                    id="rate"  formControlName="rate" placeholder="Rate">
+                </div>
+            </div>
+        </div>
+    
+        <button class="btn btn-success" type="submit">Update</button>
+        <button class="btn btn-default" [routerLink]="['/books']">Cancel</button>
+    
+    </form>
+    </div>

@@ -1,0 +1,73 @@
+<div class="add-book">
+    <div *ngIf="showError" class="alert alert-danger" role="alert">
+        Book was not added to your library. Please, try again!
+    </div>
+<form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="title" class="required">Title</label>
+        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Book title">
+    </div>
+    <div *ngIf="addBookForm.controls['title'].invalid  && (addBookForm.controls['title'].dirty || addBookForm.controls['title'].touched)" class="alert alert-danger">
+        <div *ngIf="addBookForm.controls['title'].errors.required">
+            Book title is required
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="author" class="required">Author</label>
+        <input type="text" class="form-control" id="author" formControlName="author" placeholder="Book author">
+    </div>
+    <div *ngIf="addBookForm.controls['author'].invalid  && (addBookForm.controls['author'].dirty || addBookForm.controls['author'].touched)" class="alert alert-danger">
+        <div *ngIf="addBookForm.controls['author'].errors.required">
+            Book author is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="required">Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description" placeholder="Book description">
+    </div>
+    <div *ngIf="addBookForm.controls['description'].invalid  && (addBookForm.controls['description'].dirty || addBookForm.controls['description'].touched)" class="alert alert-danger">
+            <div *ngIf="addBookForm.controls['description'].errors.required">
+                Book description is required
+            </div>
+            <div *ngIf="addBookForm.controls['description'].errors.minlength">
+                Description needs to be at least 30 chars
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-md-4 col-xs-4 col-sm-4">
+            <div class="form-group">
+                <label for="dateStart">Date start</label>
+                <input type="date" 
+                class="form-control" 
+                id="dateStart" 
+                formControlName="dateStart"
+                placeholder="Date start">
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-4 col-sm-4">
+            <div class="form-group">
+                <label for="dateRead">Date read</label>
+                    <input 
+                    type="date" 
+                    class="form-control" 
+                    id="dateRead" 
+                    formControlName="dateRead"
+                    placeholder="Date read">
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-4 col-sm-4">
+            <div class="form-group">
+                <label for="rate">Rate</label>
+                <input type="number" min="0" max="5" class="form-control" 
+                id="rate"  formControlName="rate" placeholder="Rate">
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-success" type="submit" [disabled]="addBookForm.pristine || addBookForm.invalid">Add</button>
+    <button class="btn btn-default" [routerLink]="['/books']">Cancel</button>
+
+</form>
+</div>
